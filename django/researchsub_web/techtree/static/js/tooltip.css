@@ -1,0 +1,22 @@
+#tooltip {
+    text-decoration:none;
+    position:absolute;
+    display:none;
+    border:1px solid black;
+    background-color:white;
+}
+
+#tooltip:hover {
+    display:block;
+    position:absolute;
+    overflow:hidden;
+    border:1px solid black;
+}
+/*
+#tooltip a:link{
+    color:black;
+}
+
+#tooltip a:hover{
+    color:black;
+}*/

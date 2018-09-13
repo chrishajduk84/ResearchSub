@@ -1,0 +1,20 @@
+<!-- howdy/templates/index.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Howdy!</title>
+        {% load static %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="{% static "/js/tileRender.js" %}"></script>
+        <link rel="stylesheet" href="{% static "/js/tileRender.css" %}"/>
+        <link rel="stylesheet" href="{% static "/js/tooltip.css" %}"/>
+    </head>
+    <body>
+        <span id="tooltip"></span>
+        <div id="tilediv">
+            <canvas id="tilecanvas"></canvas>
+        </div>
+    </body>
+
+</html>
