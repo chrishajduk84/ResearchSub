@@ -1,0 +1,37 @@
+html, body{
+    overflow:hidden;
+    margin: 0;
+    height:100%;
+}
+#graphdiv{
+    height:100%;
+    float:left;
+    position:relative;
+    z-index:1;
+}
+#infodiv{
+    height:100%;
+    min-width:200px;
+    width:20%;
+    background:#C3B091;
+    z-index:10;
+    position:relative;
+    float:left;
+    overflow:auto;
+}
+.category{
+    position:absolute;
+    bottom:0px;
+}
+.categoryname{
+}
+.categorybar{
+    background-color:black;
+}
+.categorycount{
+    color:white;
+    position:relative;
+}
+.paper{
+    margin:10px;
+}
