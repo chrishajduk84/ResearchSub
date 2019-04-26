@@ -5,25 +5,33 @@
         <meta charset="utf-8">
         <title>ResearchSub</title>
         {% load static %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="{% static "/js/graphRender.js" %}"></script>
         <link rel="stylesheet" href="{% static "/js/graphRender.css" %}"/>
         <!--<link rel="stylesheet" href="{% static "/js/tooltip.css" %}"/>-->
+        <link rel="icon" type="image/png" href="{% static "/img/researchsub_icon.ico" %}">
     </head>
     <body>
         <div id="infodiv">
-            <center><h2>ResearchSub</h2></center>
-            <center><input type="text" placeholder="Search..." id="searchbar"></center>
+            <center>
+                <span><img src="{% static "/img/researchsub.png" %}" style="height:75px;vertical-align:middle;"><h2>ResearchSub</h2></span>
+            </center>
             <br />
-            <center><span>Category: </span><span id="categorylabel">Science</span></center>
-            <center><button>Subscribe</button></center>
+            <center><span>Category: </span><b><span id="categorylabel">Science</span></b></center>
+            <!--<center><button>Subscribe</button></center>-->
+            <br />
 
-            <h4>Newest Papers:</h4>
-            <div id="papersdiv">
+            <center><input type="text" placeholder="Search..." id="searchbar" onchange="SearchBarChange()" onkeydown="SearchBarChange()"></center>
+            <br />
+            <div id="papersdiv" class="scrollbar scrollbar-primary">
             </div>
         </div>
         <div id="graphdiv">
         </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 
 </html>

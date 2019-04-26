@@ -1,6 +1,9 @@
 $(window).load(reloadCanvas);
 $(window).bind("resize", reloadCanvas);
 
+//Graph Object
+var graphobj;
+
 //Scrolling variables
 var graphLayer;
 var down = false;
@@ -9,6 +12,9 @@ var sHeight = 0;
 var mTotalWidth = 0;
 
 var enableScroll = false;
+
+//Search bar
+var searchBar;
 
 function reloadCanvas(){
     sWidth = $(window).width() - document.getElementById("infodiv").offsetWidth;
@@ -19,11 +25,13 @@ function reloadCanvas(){
     graphLayer.innerHTML = "";
     //graphLayer.style.width = sWidth + "px";
 
+    searchBar = document.getElementById("searchbar");
+
     var urlstring = window.location.href;
     var url = new URL(urlstring);
     var catId = url.searchParams.get('catId');
     console.log(catId);
-    new Graph(catId);
+    graphobj = new Graph(catId);
 
     //Onclick/onMove Listeners
     graphLayer.onmousedown = function(e) {
@@ -59,7 +67,7 @@ function Graph(catId){
                 graphContext.loaded = true;
                 graphContext.setLayout(sWidth, sHeight,graphContext.data['categories']);
                 document.getElementById("categorylabel").innerHTML = graphContext.data['name'];
-                graphContext.showPapers(graphContext.data['papers'])
+                graphContext.showPapers(graphContext.data['papers'],null)
                 for (i=0;i<graphContext.data['categories'].length;i++){
                     graphContext.createElement(i,graphContext.data['categories'][i]);
                 }
@@ -140,15 +148,34 @@ Graph.prototype.createElement = function(i,data){
     graphdiv.appendChild(category);
 }
 
-Graph.prototype.showPapers = function(papers){
+
+Graph.prototype.showPapers = function(papers,filter){
     var papersdiv = document.getElementById("papersdiv");
+    //Remove existing children
+    while(papersdiv.firstChild){
+        papersdiv.removeChild(papersdiv.firstChild);
+    }
+
     for (i=0;i<papers.length;i++){
+        
+        if (filter != null && !papers[i][2].toLowerCase().includes(filter.toLowerCase())){
+            continue;
+        }
+
         var p = document.createElement("div");
         p.classList.add("paper");
-        p.innerHTML = "<a href='http://doi.org/"+papers[i][1]+"'>"+papers[i][2]+"</a><br /> DOI: "+papers[i][1]+"<br />"+papers[i][3]+"<br />";
+        p.classList.add("list-group-item");
+        p.classList.add("list-group-item-action");
+        p.onclick = function(){location.href='http://doi.org/'+papers[i][1];};
+        //if ((i+1) % 2 == 1){p.classList.add("odd");}else{p.classList.add("even")}
+        p.innerHTML = "<p><b>"+papers[i][2]+"</b></p>"+papers[i][1]+"<br /><i>"+papers[i][3]+"</i><br />";
 
         papersdiv.appendChild(p);
     }
+}
+
+function SearchBarChange(){
+    graphobj.showPapers(graphobj.data['papers'],searchBar.value);
 }
 
 document.onkeydown = function(e){
