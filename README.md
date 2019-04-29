@@ -18,5 +18,4 @@ For deployment:
 Within the django folder, the deployment version shows an example of how to configure the web app to run through WSGI on an apache configuration. The configuration is based on the recommended WSGI deployment settings.
 
 ## Use
-Pulls information from the CrossRef API, requires human input (for now) to categorize each paper into a category, using the dbgenerator 
-Clicking on each category allows one to narrow the field of interest and be aware of any major updates in any specific field of science
+Pulls information from the CrossRef API, but requires human input (for now) to categorize each paper into a category (using the dbgenerator). Clicking on each category allows one to narrow the field of interest and be aware of any major updates in any specific field of science.
