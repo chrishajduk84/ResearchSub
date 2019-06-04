@@ -74,27 +74,27 @@ WSGI_APPLICATION = 'researchsub_web.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-#if 'RDS_DB_NAME' in os.environ:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "articlenetwork",#os.environ['RDS_DB_NAME'],
-        'USER': "root",#os.environ['RDS_USERNAME'],
-        'PASSWORD': "snowboarD123$",#os.environ['RDS_PASSWORD'],
-        'HOST': "researchsubdb.ckxeud1ff3kh.us-west-2.rds.amazonaws.com", #os.environ['RDS_HOSTNAME'],
-        'PORT': "3306"
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['RDS_DB_NAME'], #"articlenetwork"
+            'USER': os.environ['RDS_USERNAME'], #root
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],#"researchsubdb.ckxeud1ff3kh.us-west-2.rds.amazonaws.com", #os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT']#"3306"
     }
 }
-#else:
-#    DATABASES = {
-#        'default':{ 
-#            'ENGINE': 'django.db.backends.mysql',
-#            'NAME': 'articlenetwork',
-#            'USER': 'root',
-#            'PASSWORD': '12345678',
-#            'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-#        }
-#    }
+else:
+    DATABASES = {
+        'default':{ 
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'articlenetwork',
+            'USER': 'root',
+            'PASSWORD': '12345678',
+            'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        }
+    }
 
 
 
